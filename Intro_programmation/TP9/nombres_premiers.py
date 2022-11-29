@@ -1,4 +1,4 @@
-import time
+import time, random
 
 #Méthode 1
 #exo 1
@@ -18,7 +18,7 @@ for x in range(2, 1000):
 		P.append(x)
 end = time.time()
 temps1 = end - start
-print(f"Nombres premier : {P}")
+print(f"Nombres premier méthode 1: {P}")
 print(f"Temps d'exécution de la méthode 1: {temps1:.2}ms\n")
 
 #exo 3
@@ -29,12 +29,14 @@ print(f"Il y a {len(P)} nombres premier\n")
 start = time.time()
 def is_prime2(n:int)->bool:
 	"""Renvoie True si n est un entier, False sinon"""
-	for i in range(2, P):
+	for i in range(2, n):
 		if (n%i) == 0:
 			return False
 	return True
+print(is_prime2(1000))
 end = time.time()
 temps2 = end - start
+#
 print(f"Temps d'exécution de la méthode 2: {temps2:.2}ms\n")
 
 #exo 2
@@ -61,7 +63,32 @@ temps3 = end - start
 print(f"Temps d'exécution de la méthode 3: {temps3:.2}ms\n")
 
 #exo 2
-print("Oui c'est plus lent, parceque au lieu de faire une itération avec la liste P, nous faisons une itération de chaque multiple de chaque éléments de P.")
+print("Oui c'est plus lent, parceque au lieu de faire une itération avec la liste P, nous faisons une itération de chaque multiple de chaque éléments de P.\n")
 #	1000
 #	 ∑ P^P-i  =  nombres d'itération
 #	i=2
+
+
+
+
+
+#Exercice 4 TP9
+#exo 3
+def testPrimalisteFermat(N):
+	a = random.randint(0, N-1)
+	if a**(N-1)%N == 1:
+		return True
+	else:
+		return False
+
+#exo 4
+erreur = 0
+nombre_nb_premier = 0
+for i in range(2, 10000):
+	verif = is_prime2(i)
+	if not(testPrimalisteFermat(i)) == verif:
+		erreur += 1
+	if verif:
+		nombre_nb_premier += 1
+		
+print(erreur, nombre_nb_premier)
