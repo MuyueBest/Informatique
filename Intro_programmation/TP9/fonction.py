@@ -14,13 +14,11 @@ def aire_carre2(cote:float)->float:
 	return aire_rectangle(cote, cote)
 
 #exo 4
-def aire_rectangle2(longueur = None, largeur = None)->float:
+def aire_rectangle2(longueur, largeur = None)->float:
 	"""Donne l'aire d'un triangle de longueur et largeur donné"""
 	if (longueur == largeur) or (largeur == None):
-		if (longueur == None):
-			return aire_carre(largeur)
 		return aire_carre(longueur)
-	return longueur*largeur
+	return aire_rectangle(longueur, largeur)
 
 #exo 5
 def coords_carre(c:int, coin_inf_gauche:tuple)->list:
